@@ -14,14 +14,12 @@
     <% @searches.each do |search| %>
       <tr>
         <td><%= search.title %></td>
-        <td><%= link_to 'Show', search %></td>
-        <td><%= link_to 'Edit', edit_search_path(search) %></td>
-        <td><%= link_to 'Destroy', search, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if search.user == current_user %>
+          <td><%= link_to 'Show', search %></td>
+          <td><%= link_to 'Edit', edit_search_path(search) %></td>
+          <td><%= link_to 'Destroy', search, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><% end %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Search', new_search_path %>

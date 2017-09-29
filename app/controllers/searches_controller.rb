@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /searches
   # GET /searches.json
   def index
@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
 
   # GET /searches/new
   def new
-    @search = Search.new
+    @search = current_user.searches.build
   end
 
   # GET /searches/1/edit
@@ -24,7 +24,7 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.json
   def create
-    @search = Search.new(search_params)
+    @search = current_user.searches.build(search_params)
 
     respond_to do |format|
       if @search.save
