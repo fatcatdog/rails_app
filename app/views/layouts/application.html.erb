@@ -6,13 +6,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   </head>
 
   <body>
 
   <div id="main" class="container">
     <header class="navbar navbar-default" role="navigation">
-      <div id="logo" class="navbar-brand"> <%= link_to "Search Homepage", root_path %></div>
+      <div id="logo" class="navbar-brand"> <%= link_to "Search Homepage", searches_path %></div>
       <nav class="collapse navbar-collapse navbar-ex-1-collapse">
         <% if user_signed_in? %>
           <ul class="nav navbar-nav navbar-left">
@@ -30,7 +31,6 @@
         <% end %>
       </nav>
     </header>
-  </div>
 
     <% flash.each do |name, msg| %>
       <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
@@ -39,5 +39,6 @@
   <div id="container" class="center-block">
     <%= yield %>
   </div>
+</div>
   </body>
 </html>

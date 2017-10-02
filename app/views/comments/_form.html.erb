@@ -11,20 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :search_id %>
-    <%= form.number_field :search_id, id: :comment_search_id %>
-  </div>
 
   <div class="field">
     <%= form.label :body %>
     <%= form.text_area :body, id: :comment_body %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :comment_user_id %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>

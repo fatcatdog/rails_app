@@ -5,6 +5,10 @@
         <td>
           <%= link_to like_search_path(search), method: :put do %>
             <i class="fa fa-caret-up fa-lg " aria-hidden="true"></i>
+                <% end %>
+            <br>
+            <%= link_to dislike_search_path(search), method: :put do %>
+              <i class="fa fa-caret-down fa-lg " aria-hidden="true"></i>
           <% end %>
 
           <%= link_to search.title, search, class: "title" %>

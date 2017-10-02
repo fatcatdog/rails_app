@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
   # GET /searches
   # GET /searches.json
   def index
-    @searches = Search.all
+    @searches = Search.order(cached_votes_total: :desc)
   end
 
   # GET /searches/1
@@ -64,13 +64,13 @@ class SearchesController < ApplicationController
   def upvote
     @search = Search.find(params[:id])
     @search.upvote_by current_user
-    redirect_to :back
+    redirect_to @search
   end
 
   def downvote
     @search = Search.find(params[:id])
     @search.downvote_by current_user
-    redirect_to :back
+    redirect_to @search
   end
 
   private

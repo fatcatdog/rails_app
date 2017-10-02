@@ -3,12 +3,20 @@ Rails.application.routes.draw do
   devise_for :users
   resources :searches do
     member do
-      put "like", to: "search#upvote"
-      put "dislike", to: "search#downvote"
+      put "like", to: "searches#upvote"
+      put "dislike", to: "searches#downvote"
     end
     resources :comments
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'searches#index'
+  devise_scope :user do
+    authenticated :user do
+      root 'searches#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
 end

@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Search:</strong>
-  <%= @comment.search_id %>
+  <strong>Created at:</strong>
+  <%= @comment.created_at %>
 </p>
 
 <p>
@@ -12,8 +12,8 @@
 
 <p>
   <strong>User:</strong>
-  <%= @comment.user %>
+  <%= @comment.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Back', searches_path %>
