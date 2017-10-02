@@ -7,8 +7,7 @@
             <i class="fa fa-caret-up fa-lg " aria-hidden="true"></i>
           <% end %>
 
-          <%= link_to search.title, search.url, class: "title" %>
-          <%= link_to search.url, "(#{search.url})", target: "_blank" %>
+          <%= link_to search.title, search, class: "title" %>
         </td>
         <tr class="post">
           <td> <p><%= search.get_upvotes.size %> points by <%= search.user.email %> <%= time_ago_in_words(search.created_at) %> ago | <%= link_to "#{search.comments.count} comments", search %> </p></td>

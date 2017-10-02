@@ -4,7 +4,6 @@
       <i class="fa fa-caret-up fa-lg " aria-hidden="true"></i>
     <% end %>
     <%= @search.title %>
-    <a href="<%= @search.url %>"><%= @search.url %></a>
   </h4>
   <p><%= @search.get_upvotes.size %> points by <%= @search.user.email %> <%= time_ago_in_words(@search.created_at) %> ago | <%= link_to "#{@search.comments.count} comments", @search %> </p>
   <br>
