@@ -1,9 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h4>
+    <%= link_to like_search_path(@search), method: :put do %>
+      <i class="fa fa-caret-up fa-lg " aria-hidden="true"></i>
+    <% end %>
+    <%= @search.title %>
+    <a href="<%= @search.url %>"><%= @search.url %></a>
+  </h4>
+  <p><%= @search.get_upvotes.size %> points by <%= @search.user.email %> <%= time_ago_in_words(@search.created_at) %> ago | <%= link_to "#{@search.comments.count} comments", @search %> </p>
+  <br>
 
-<p>
-  <strong>Title:</strong>
-  <%= @search.title %>
-</p>
+  <%= simple_form_for [@search, Comment.new] do |f| %>
+    <%= f.text_area :body, class: "form-control" %>
+    <br>
+    <%= f.submit "add comment" %>
+  <% end %>
 
-<%= link_to 'Edit', edit_search_path(@search) %> |
-<%= link_to 'Back', searches_path %>
+  <div id="comments">
+    <%= render :partial => @search.comments %>
+  </div>
+</div>

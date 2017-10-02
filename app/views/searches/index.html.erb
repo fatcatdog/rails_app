@@ -1,24 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Searches</h1>
-
 <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @searches.each do |search| %>
-      <tr>
-        <td><%= search.title %></td>
-          <% if search.user == current_user %>
-          <td><%= link_to 'Show', search %></td>
-          <td><%= link_to 'Edit', edit_search_path(search) %></td>
-          <td><%= link_to 'Destroy', search, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><% end %></td>
+      <tr class="post">
+        <td>
+          <%= link_to like_search_path(search), method: :put do %>
+            <i class="fa fa-caret-up fa-lg " aria-hidden="true"></i>
+          <% end %>
+
+          <%= link_to search.title, search.url, class: "title" %>
+          <%= link_to search.url, "(#{search.url})", target: "_blank" %>
+        </td>
+        <tr class="post">
+          <td> <p><%= search.get_upvotes.size %> points by <%= search.user.email %> <%= time_ago_in_words(search.created_at) %> ago | <%= link_to "#{search.comments.count} comments", search %> </p></td>
+        </tr>
       </tr>
     <% end %>
   </tbody>
